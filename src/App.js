@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useState } from "react";
+import "./App.css";
 
-function App() {
+const App = () => {
+  let [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const resetCount = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
+
+  const decrement = () => {
+    setCount((count = 0));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <Fragment>
+      <header>
+        <h1>Counter App</h1>
       </header>
-    </div>
+      <p>Count равен {count}</p>
+      <button onClick={increment}>+1</button>
+      <button onClick={resetCount}>-1</button>
+      <button onClick={decrement}>Сбросить</button>
+    </Fragment>
   );
-}
+};
 
 export default App;
